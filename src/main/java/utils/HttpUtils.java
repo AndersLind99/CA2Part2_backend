@@ -1,6 +1,7 @@
 package utils;
 
 import com.google.gson.Gson;
+import dtos.CatFactDTO;
 import dtos.RenameMeDTO;
 
 import java.io.IOException;
@@ -34,19 +35,19 @@ public class HttpUtils {
 
     private static Gson gson = new Gson();
 
-    public static RenameMeDTO fetchDataParallel() throws ExecutionException, InterruptedException {
+    public static CatFactDTO fetchDataParallel() throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newCachedThreadPool();
 
         // Create parallel fetches here. by following the template below
 
-        Future<RenameMeDTO> renameMeDTOFuture = es.submit(
-                () -> gson.fromJson(HttpUtils.fetchData("https://api.chucknorris.io/jokes/random"),RenameMeDTO.class)
+        Future<CatFactDTO> catFactDTOFuture = es.submit(
+                () -> gson.fromJson(HttpUtils.fetchData("https://meowfacts.herokuapp.com/"), CatFactDTO.class)
 
         );
 
         //
-        RenameMeDTO renameMeDTO = renameMeDTOFuture.get();
+        CatFactDTO catFactDTO = catFactDTOFuture.get();
 
-        return renameMeDTO;
+        return catFactDTO;
     }
 }
