@@ -31,7 +31,7 @@ public class CatFactResource {
     @Path("fact")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public static Response getFact() throws ExecutionException, InterruptedException {
+    public Response getFact() throws ExecutionException, InterruptedException {
 
         return Response.ok().entity(GSON.toJson(FACADE.getCatFact())).build();
     }
