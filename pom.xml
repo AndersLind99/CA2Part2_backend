@@ -17,7 +17,9 @@
         <!-- IMPORTANT-1: If your server uses https (via NGINX) use your DOMAIN NAME and https below: -->
         <!-- IMPORTANT-2: Observe we are NOT using /manager/html but /manager/text for script uploads --> 
         <remote.server>https://anderslind99.com/manager/text</remote.server>
-        
+
+        <db.name>startcode</db.name>
+
     </properties>
     
     <dependencies>
