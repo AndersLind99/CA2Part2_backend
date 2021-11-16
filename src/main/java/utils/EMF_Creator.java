@@ -1,7 +1,5 @@
 package utils;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.Properties;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -45,8 +43,7 @@ public class EMF_Creator {
             System.out.println("CONNECTION_STR -->" + System.getenv("CONNECTION_STR"));
             String user = System.getenv("USER");
             String pw = System.getenv("PW");
-            String dbName = getDbName(); //Gets the database name from pom.xml
-            String connection_str = System.getenv("CONNECTION_STR") + dbName; //Creates the full JDBC connection string
+            String connection_str = System.getenv("CONNECTION_STR");
             Properties props = new Properties();
             props.setProperty("javax.persistence.jdbc.user", user);
             props.setProperty("javax.persistence.jdbc.password", pw);
@@ -70,7 +67,7 @@ public class EMF_Creator {
         }
         EntityManagerFactory emf = null;
         try {
-            emf =  Persistence.createEntityManagerFactory(puName, null);
+         emf =  Persistence.createEntityManagerFactory(puName, null);
 
         } catch (javax.persistence.PersistenceException ex){
             System.out.println("##########################################################");
@@ -80,19 +77,6 @@ public class EMF_Creator {
             System.out.println("##########################################################");
             throw ex;
         }
-        return emf;
+         return emf;
     }
-
-    private static String getDbName() {
-        Properties pomProperties;
-        InputStream is = EMF_Creator.class.getClassLoader().getResourceAsStream("properties-from-pom.properties");
-        pomProperties = new Properties();
-        try {
-            pomProperties.load(is);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return pomProperties.getProperty("db.name");
-    }
-
 }
