@@ -45,8 +45,8 @@ public class EMF_Creator {
             System.out.println("CONNECTION_STR -->" + System.getenv("CONNECTION_STR"));
             String user = System.getenv("USER");
             String pw = System.getenv("PW");
-            String dbName = getDbName();
-            String connection_str = System.getenv("CONNECTION_STR") + dbName;
+            String dbName = getDbName(); //Gets the database name from pom.xml
+            String connection_str = System.getenv("CONNECTION_STR") + dbName; //Creates the full JDBC connection string
             Properties props = new Properties();
             props.setProperty("javax.persistence.jdbc.user", user);
             props.setProperty("javax.persistence.jdbc.password", pw);
@@ -54,8 +54,8 @@ public class EMF_Creator {
             props.setProperty("javax.persistence.jdbc.driver", "com.mysql.cj.jdbc.Driver");
 
             //Sets the production log-level to show only potential problems
-            props.setProperty("eclipselink.logging.level", "WARNING");
-            props.setProperty("eclipselink.logging.level.sql", "WARNING");
+            props.setProperty("eclipselink.logging.level","WARNING");
+            props.setProperty("eclipselink.logging.level.sql","WARNING");
             return Persistence.createEntityManagerFactory("pu", props);
         }
 
@@ -70,9 +70,9 @@ public class EMF_Creator {
         }
         EntityManagerFactory emf = null;
         try {
-            emf = Persistence.createEntityManagerFactory(puName, null);
+            emf =  Persistence.createEntityManagerFactory(puName, null);
 
-        } catch (javax.persistence.PersistenceException ex) {
+        } catch (javax.persistence.PersistenceException ex){
             System.out.println("##########################################################");
             System.out.println("######      ERROR Creating a persistence Unit       ######");
             System.out.println("###### Have you started the dev and test databases? ######");
