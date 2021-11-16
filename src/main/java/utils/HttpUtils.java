@@ -46,7 +46,7 @@ public class HttpUtils {
         );
 
         //
-        CatFactDTO catFactDTO = catFactDTOFuture.get();
+        CatFactDTO catFactDTO = new CatFactDTO( catFactDTOFuture.get());
 
         return catFactDTO;
     }

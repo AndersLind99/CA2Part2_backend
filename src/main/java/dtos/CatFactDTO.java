@@ -5,23 +5,32 @@ import entities.CatFact;
 public class CatFactDTO {
 
     private String[] data;
-    private String fact;
+    private String catFact;
 
-    public CatFactDTO(String[] fact) {
-        this.fact = fact[0];
-    }
 
     public CatFactDTO(CatFact catFact) {
-        this.fact = catFact.getFact();
+        this.catFact = catFact.getFact();
 
 
+    }
+
+    public CatFactDTO(CatFactDTO catFactDTO) {
+        this.catFact = catFactDTO.getData()[0];
     }
 
     public String getFact() {
-        return fact;
+        return catFact;
     }
 
     public void setFact(String fact) {
-        this.fact = fact;
+        this.catFact = fact;
+    }
+
+    public String[] getData() {
+        return data;
+    }
+
+    public void setData(String[] data) {
+        this.data = data;
     }
 }
