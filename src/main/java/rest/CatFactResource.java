@@ -3,7 +3,6 @@ package rest;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import facades.CatFactFacade;
-import facades.FacadeExample;
 import utils.EMF_Creator;
 
 import javax.persistence.EntityManagerFactory;
@@ -32,7 +31,7 @@ public class CatFactResource {
     @Path("fact")
     @GET
     @Produces({MediaType.APPLICATION_JSON})
-    public Response getFact() throws ExecutionException, InterruptedException {
+    public static Response getFact() throws ExecutionException, InterruptedException {
 
         return Response.ok().entity(GSON.toJson(FACADE.getCatFact())).build();
     }

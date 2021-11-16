@@ -1,18 +1,12 @@
 package dtos;
 
-import entities.CatFact;
-
 public class CatFactDTO {
 
     private String[] data;
     private String catFact;
 
 
-    public CatFactDTO(CatFact catFact) {
-        this.catFact = catFact.getFact();
 
-
-    }
 
     public CatFactDTO(CatFactDTO catFactDTO) {
         this.catFact = catFactDTO.getData()[0];
